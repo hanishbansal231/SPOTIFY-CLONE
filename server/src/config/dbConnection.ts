@@ -1,18 +1,17 @@
-import mongoose, { connect } from "mongoose";
+import mongoose, { connect, Connection } from "mongoose";
 
-const dbConnection = async () => {
+const dbConnection = async (): Promise<Connection | undefined> => {
     try {
-        const { connection } = await connect(process.env.DB_URL ?? '');
+        const { connection } = await connect(process.env.DB_URL!);
 
         if (connection) {
-            console.log(`DB is connected Successfully...${connection.host}`)
+            return connection;
         }
 
-        return connection;
+        throw new Error('Failed to connect to the database.');
 
     } catch (error) {
-        console.log(error);
-        console.error(error);
+        console.error('Error connecting to the database:', error);
         process.exit(1);
     }
 }

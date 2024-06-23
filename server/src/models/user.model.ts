@@ -1,7 +1,7 @@
 import mongoose, { model, Schema, CallbackError } from "mongoose";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { User } from "@src/shared/interface/model.interface";
+import { User } from "@shared/interface/model.interface";
 import crypto from 'crypto';
 
 const userSchema: Schema<User> = new Schema({
