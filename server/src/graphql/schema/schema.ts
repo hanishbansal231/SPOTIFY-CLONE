@@ -1,6 +1,9 @@
-import { Gender } from "@shared/enums/model.enum";
-
 export const schema = `#graphql
+
+enum Gender {
+  MALE
+  FEMALE
+}
 
 type User {
     _id:ID
@@ -10,11 +13,11 @@ type User {
     username: String!
     password: String!
     mobile_number: Int!
-    gender: [Gender!]!
+    gender: Gender!
     access_token: String
     refresh_token: String
     forgotPasswordToken: String
-    # forgotPasswordExpiryDate: Date
+    forgotPasswordExpiryDate: String
 }
 
 type Query {
@@ -22,4 +25,4 @@ type Query {
 }
 
 
-`
+`;
