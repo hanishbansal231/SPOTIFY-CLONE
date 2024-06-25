@@ -5,6 +5,12 @@ enum Gender {
   FEMALE
 }
 
+type Success {
+  message:String
+  status:Boolean
+  user:User
+}
+
 type User {
     _id:ID
     firstName: String!
@@ -22,6 +28,21 @@ type User {
 
 type Query {
     users:[User]
+}
+
+# Define an input type for the register mutation
+input RegisterInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  username: String!
+  password: String!
+  mobile_number: String!
+  gender: Gender!
+}
+
+type Mutation {
+  register(input: RegisterInput!): Success
 }
 
 

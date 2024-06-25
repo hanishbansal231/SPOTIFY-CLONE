@@ -1,4 +1,4 @@
-import mongoose, { model, Schema, CallbackError } from 'mongoose';
+import { model, Schema, CallbackError } from 'mongoose';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { User } from '@shared/interface/model.interface';
@@ -8,11 +8,11 @@ const userSchema: Schema<User> = new Schema(
   {
     firstName: {
       type: String,
-      require: [true, 'Firstname is required...'],
+      required: [true, 'Firstname is required...'],
     },
     lastName: {
       type: String,
-      require: [true, 'Lastname is required...'],
+      required: [true, 'Lastname is required...'],
     },
     email: {
       type: String,
@@ -20,22 +20,22 @@ const userSchema: Schema<User> = new Schema(
     },
     username: {
       type: String,
-      require: [true, 'Username is required...'],
+      required: [true, 'Username is required...'],
       unique: true,
     },
     password: {
       type: String,
-      require: [true, 'Password is required...'],
+      required: [true, 'Password is required...'],
     },
     mobile_number: {
       type: Number,
-      require: [true, 'Mobile Number is required...'],
+      required: [true, 'Mobile Number is required...'],
       unique: true,
     },
     gender: {
       type: String,
-      enum: ['male', 'female'],
-      require: [true, 'Gender is required...'],
+      enum: ['MALE', 'FEMALE'],
+      required: [true, 'Gender is required...'],
     },
     access_token: String,
     refresh_token: String,
@@ -88,5 +88,5 @@ userSchema.methods = {
   },
 };
 
-const User = model<User>('User', userSchema);
-export default User;
+const UserModel = model<User>('User', userSchema);
+export default UserModel;

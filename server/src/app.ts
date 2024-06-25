@@ -1,17 +1,12 @@
 import { ApolloServer } from '@apollo/server';
 import express, { Application, Request, Response } from 'express';
 import { schema } from '@graphql/schema/schema';
-import { getAllUser } from '@controllers/user.controller';
+import resolvers from '@graphql/resolvers/resolvers';
 
 const app: Application = express();
-
 const server = new ApolloServer({
   typeDefs: schema,
-  resolvers: {
-    Query: {
-      users: getAllUser,
-    },
-  },
+  resolvers: resolvers,
 });
 
 app.get('/', (req: Request, res: Response) => {

@@ -1,7 +1,7 @@
 import globals from 'globals';
-import pluginJs from '@eslint/js';
+// import pluginJs from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
-import parser from '@typescript-eslint/parser';
+// import parser from '@typescript-eslint/parser';
 
 export default {
     root: true,
@@ -16,15 +16,14 @@ export default {
         es2021: true,
     },
     extends: [
-        'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
+        'eslint:recommended',
+        'plugin:prettier/recommended'
     ],
-    plugins: [
-        '@typescript-eslint',
-    ],
+    plugins: ['@typescript-eslint'],
     rules: {
         rules: {
-            'no-unused-vars': 'warn',
+            'no-unused-vars': 'error',
             'no-console': 'error',
             '@typescript-eslint/no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }],
             '@typescript-eslint/explicit-function-return-type': 'off',
@@ -53,8 +52,8 @@ export default {
         {
             files: ['*.js', '*.jsx'],
             parserOptions: {
-                ecmaVersion: 2020,
-                sourceType: 'module',
+                "ecmaVersion": 12,
+                "sourceType": "module"
             },
             env: {
                 browser: globals.browser,
