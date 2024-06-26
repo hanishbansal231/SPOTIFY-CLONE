@@ -1,4 +1,4 @@
-import mongoose, { connect, Connection } from 'mongoose';
+import { connect, Connection } from 'mongoose';
 
 const dbConnection = async (): Promise<Connection | undefined> => {
   try {

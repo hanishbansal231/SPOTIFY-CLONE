@@ -1,5 +1,6 @@
 import UserModel from '@models/user.model';
 import { User } from '@shared/interface/model.interface';
+import ApiResponse from '@src/utils/apiResponse';
 
 export const getAllUser = async () => {
    try {
@@ -41,11 +42,18 @@ export const register = async (_: unknown, { input }: { input: User }) => {
          throw new Error('User registration failed, please try again...');
       }
 
-      return {
+      return new ApiResponse<User>({
          message: 'User registered successfully!',
          status: true,
-         user,
-       };
+         dataKey: 'user',
+         data: user
+      });
+
+      // return {
+      //    message: 'User registered successfully!',
+      //    status: true,
+      //    user,
+      //  };
    } catch (error) {
       console.error(error);
       if (error instanceof Error) {
