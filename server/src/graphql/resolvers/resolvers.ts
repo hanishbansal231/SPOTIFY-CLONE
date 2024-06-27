@@ -1,11 +1,12 @@
-import { getAllUser, register } from '@controllers/user.controller';
+import { getAllUser, register,userVerify } from '@controllers/user.controller';
 
 const resolvers = {
    Query: {
       users: getAllUser
    },
    Mutation: {
-      register: register
+      register: register,
+      userVerify:userVerify
    }
 };
 

@@ -11,6 +11,12 @@ type Success {
   user:User
 }
 
+type VerifySuccess {
+  message:String
+  status:Boolean
+  user:User
+}
+
 type User {
     _id:ID
     firstName: String!
@@ -41,8 +47,13 @@ input RegisterInput {
   gender: Gender!
 }
 
+input VerifyInput {
+  email: String!
+}
+
 type Mutation {
-  register(input: RegisterInput!): Success
+  register(input: RegisterInput!): Success,
+  userVerify(input:VerifyInput!): VerifySuccess
 }
 
 
